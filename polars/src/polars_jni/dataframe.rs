@@ -12,7 +12,7 @@ use jni::objects::{GlobalRef, JClass, JObject, JString};
 // lifetime checker won't let us.
 use jni::sys::{jbyteArray, jint, jlong, jstring};
 
-use crate::JDataFrame;
+use crate::data_frame::JDataFrame;
 
 #[no_mangle]
 pub extern "system" fn Java_rs_polars_api_DataFrame_print(
