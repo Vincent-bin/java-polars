@@ -10,10 +10,10 @@ extern "C" {
 /*
  * Class:     rs_polars_api_Polars
  * Method:    fromCSV
- * Signature: (Ljava/lang/String;)J
+ * Signature: (Ljava/lang/String;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)J
  */
 JNIEXPORT jlong JNICALL Java_rs_polars_api_Polars_fromCSV
-  (JNIEnv *, jclass, jstring);
+  (JNIEnv *, jclass, jstring, jobject, jobject, jobject);
 
 #ifdef __cplusplus
 }

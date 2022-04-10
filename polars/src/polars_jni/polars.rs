@@ -19,13 +19,20 @@ pub extern "system" fn Java_rs_polars_api_Polars_fromCSV(
     env: JNIEnv,
     _class: JClass,
     file_name: JString,
+    has_header: JObject,
+    columns: JObject,
+    new_columns: JObject,
 ) -> jlong {
     let file_name: String = env
         .get_string(file_name)
         .expect("Couldn't get java string!")
         .into();
 
-    let data_frame = Box::into_raw(Box::new(read_csv(file_name).unwrap()));
+    let has_header = env.get_field(has_header, "value", "Z").expect("Couldn't get class").z().unwrap();
+    let columns = env.get_field(columns, "value", "[]").expect("Couldn't get array");
+    let new_columns = env.get_field(new_columns, "value", "[]").expect("Couldn't get array");
+
+    let data_frame = Box::into_raw(Box::new(read_csv(&file_name).unwrap()));
 
     data_frame as jlong
 }

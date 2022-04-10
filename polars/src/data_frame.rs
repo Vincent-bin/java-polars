@@ -11,8 +11,8 @@ impl JDataFrame {
     }
 }
 
-pub fn read_csv(file_path: String) -> Result<JDataFrame> {
-    let p = std::path::Path::new(&file_path);
+pub fn read_csv(file_path: &String) -> Result<JDataFrame> {
+    let p = std::path::Path::new(file_path);
     let p = resolve_homedir(p);
     let f = File::open(&p)?;
     let df = CsvReader::new(f).finish().unwrap();
